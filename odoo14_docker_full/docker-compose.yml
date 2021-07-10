@@ -19,7 +19,7 @@ services:
       - PGADMIN_DEFAULT_EMAIL=codemobiles@gmail.com
       - PGADMIN_DEFAULT_PASSWORD=password
     volumes:
-      - odoo-pgadmin-data:/var/lib/pgadmin
+      - ./pgadmin:/var/lib/pgadmin
   web:
     image: odoo:14.0
     depends_on:
