@@ -25,7 +25,7 @@ services:
     depends_on:
       - postgres
     ports:
-      - "1150:8069"
+      - "8069:8069"
     environment:
       - HOST=postgres
       - USER=codemobiles
