@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:13
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=codemobiles
+      - POSTGRES_PASSWORD=codemobiles
+    volumes:
+      - ./db_data:/var/lib/postgresql/data
+  pgadmin4:
+    image: dpage/pgadmin4
+    depends_on:
+      - postgres
+    ports:
+      - "1112:80"
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=codemobiles@gmail.com
+      - PGADMIN_DEFAULT_PASSWORD=codemobiles
+    volumes:
+      - odoo-pgadmin-data:/var/lib/pgadmin
+  web:
+    image: odoo:14.0
+    depends_on:
+      - postgres
+    ports:
+      - "1150:8069"
+    environment:
+      - HOST=postgres
+      - USER=codemobiles
+      - PASSWORD=codemobiles
+    volumes:
+      - ./web_data:/var/lib/odoo
+      # - ./config:/etc/odoo
+      - ./addons:/mnt/extra-addons
+
+volumes:
+  odoo-pgadmin-data:
+    name: odoo-pgadmin
