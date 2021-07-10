@@ -6,7 +6,7 @@ services:
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=codemobiles
-      - POSTGRES_PASSWORD=codemobiles
+      - POSTGRES_PASSWORD=password
     volumes:
       - ./db_data:/var/lib/postgresql/data
   pgadmin4:
@@ -17,7 +17,7 @@ services:
       - "1112:80"
     environment:
       - PGADMIN_DEFAULT_EMAIL=codemobiles@gmail.com
-      - PGADMIN_DEFAULT_PASSWORD=codemobiles
+      - PGADMIN_DEFAULT_PASSWORD=password
     volumes:
       - odoo-pgadmin-data:/var/lib/pgadmin
   web:
@@ -29,7 +29,7 @@ services:
     environment:
       - HOST=postgres
       - USER=codemobiles
-      - PASSWORD=codemobiles
+      - PASSWORD=password
     volumes:
       - ./web_data:/var/lib/odoo
       # - ./config:/etc/odoo
