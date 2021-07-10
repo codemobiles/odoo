@@ -8,7 +8,7 @@ services:
       - POSTGRES_USER=codemobiles
       - POSTGRES_PASSWORD=password
     volumes:
-      - ./db_data:/var/lib/postgresql/data:z
+      - ./db_data:/var/lib/postgresql/data
   pgadmin4:
     image: dpage/pgadmin4
     depends_on:
